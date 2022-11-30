@@ -51,8 +51,7 @@ class ItemsController extends Controller
         ]);
 
         return redirect('/items')
-        ->with(['message' => '商品登録が完了しました。',
-        'status' => 'register']);
+        ->with(['message' => '商品登録が完了しております。']);
 
         return view('item.index');
     }

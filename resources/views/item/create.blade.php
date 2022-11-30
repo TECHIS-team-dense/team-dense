@@ -14,9 +14,7 @@
           <form method="POST" action="{{ route('items.store') }}">
               @csrf
 
-              @foreach ($errors->all() as $error)
-                <li class="text-danger p-1">{{$error}}</li>
-              @endforeach
+              <x-auth-validation-errors :errors="$errors" />
               
               <div class="card-body">
                   <div class="form-group ">
@@ -31,7 +29,7 @@
 
                   <div class="form-group">
                       <label for="price">価格</label>
-                      <input type="price" class="form-control" id="price" name="price" required value="{{ old('price')}}">
+                      <input type="number" class="form-control" id="price" name="price" required value="{{ old('price')}}">
                   </div>
 
                   <div class="form-group">

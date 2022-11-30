@@ -7,7 +7,21 @@
 <div class="row">
   
   <div class="col-12">
+
       {{-- <x-flash-message status="session('status')" /> --}}
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+      <script>
+        @if (session('message'))
+            $(function() {
+                toastr.options = {
+                  "positionClass": "“toast-bottom-right”"
+                }
+                toastr.info('{{ session('message') }}');
+            });
+        @endif
+    </script>
 
       <div class="card">
         <div class="text-center m-2 p-2">
@@ -15,11 +29,11 @@
         </div>
 
           <div class="card-header">
+
               <div class="float - right ">
               </div>
               <div class="card-tools">
                       <div class="container">
-
                       
               </div>
           </div>
