@@ -3,7 +3,7 @@
 @section('title', 'ホーム画面')
 
 @section('content')
-<h3 class="pl-5">商品一覧</h3>
+<h3 class="pl-5">ゴミ箱（商品）</h3>
 <div class="row">
   
   <div class="col-12">
@@ -22,16 +22,13 @@
                 toastr.options = {
                   // "positionClass": "“toast-bottom-right”"
                 }
+                
                 toastr.info('{{ session('message') }}');
             });
         @endif
     </script>
 
       <div class="card">
-        <div class="text-center m-2 p-2">
-          <a href="{{ url('items/create') }}" class="btn btn-success text-center">商品新規登録</a>
-        </div>
-
           <div class="card-header">
 
               <div class="float - right ">
@@ -54,11 +51,11 @@
                           <th class="table-success">価格（円）</th>
                           <th class="table-success">商品詳細</th>
                           <th class="table-success"></th>
-                          <th class="table-success"></th>
+
                       </tr>
                   </thead>
                   <tbody>
-                    @foreach ($items as $item)
+                    @foreach ($expiredItems as $item)
                       <tr>
                           <td>{{ $item->id }}</td>
                           <td>{{ $item->name }}</td>
@@ -68,16 +65,10 @@
                           {{-- <td>
                               <x-image-thumbnail :filename="$item->filename" />
                           </td> --}}
-                          <td>
-                              <button onclick="location.href='{{ route('items.edit', ['item' => $item->id ]) }}'"  class="btn btn-info text-white"">編集</button>
-                          </td>
-
-                          <form id="delete_{{ $item->id }}" method="post" action="{{ route('items.destroy', ['item' => $item->id ]) }}">
+                          <form id="delete_{{ $item->id }}" method="post" action="{{ route('expired-items.destroy', ['item' => $item->id ]) }}">
                             @csrf
-                            @method('delete')
-
                             <td>
-                                <a href="#" data-id="{{ $item->id }}" onclick="deletePost(this)" class="btn btn-danger">削除</a>
+                                <a href="#" data-id="{{ $item->id }}" onclick="deletePost(this)" class="btn btn-danger">完全削除</a>
                             </td>
                         </form>
                       </tr>
@@ -85,10 +76,10 @@
                   </tbody>
               </table>
             </div>
+            <div class="card-footerb text-center m-4">
+              <a href="{{ url('items') }}" class="btn btn-secondary">商品一覧へ</a>
           </div>
-      </div>
-      <div class="">
-        {{ $items->links() }}
+          </div>
       </div>
   </div>
 

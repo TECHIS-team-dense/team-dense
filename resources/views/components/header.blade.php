@@ -16,6 +16,11 @@
       <li class="nav-item ml-2">
         <a href="{{ url('items/create') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品新規登録画面</a>
       </li>
+
+      <li class="nav-item ml-2">
+        <a href="{{ url('expired-items/index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">ゴミ箱（商品）</a>
+      </li>
+      
     </ul>
 
     <ul class="navbar-nav ml-auto mr-5">
