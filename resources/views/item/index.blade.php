@@ -28,13 +28,9 @@
 
       <div class="card">
           <div class="card-header">
-
-              <div class="float - right ">
-              </div>
               <div class="card-tools">
                 <div class="container">
                   <div class="justify-content-center">
-                    <div class="col-md-32">
                   <section class="text-gray-600 body-font">
                     <div class="container py-3">
                       <div class="flex flex-col text-center w-full mb-8">
@@ -80,20 +76,21 @@
                             </tr>
                             @endforeach
                           </tbody>
+
                         </table>
+                        <div class="text-center">
+                          {{ $items->links() }}
+                        </div>
                       </div>
                     </div>
                   </section>    
                 </div>
-                </div>
-                </div>
+              </div>
+            </div>
           </div>
 
-          </div>
-      </div>
-      <div class="">
-        {{ $items->links() }}
-      </div>
+        </div>
+    </div>
   </div>
 
 </div>
