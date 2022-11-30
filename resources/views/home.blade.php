@@ -1,8 +1,10 @@
 {{-- @extends('layouts.app') --}}
 @extends('layouts.common')
 
+@section('title', '商品一覧')
 
 @section('content')
+<h3 class="pl-5">ホーム</h3>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
