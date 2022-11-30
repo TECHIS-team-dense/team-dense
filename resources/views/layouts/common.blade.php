@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- cssをインポート -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

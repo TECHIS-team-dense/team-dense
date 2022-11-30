@@ -1,56 +1,95 @@
 @extends('layouts.common')
 
-@section('title', 'ホーム画面')
+@section('title', '商品編集画面')
 
 @section('content')
-<h3 class="p-2">商品情報編集画面</h3>
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-tools">
+                <div class="container">
 
-    {{-- <x-auth-validation-errors :errors="$errors" /> --}}
-    
+                    <x-auth-validation-errors :errors="$errors" />
 
-        <div class="card card-primary">
-            <form method="POST" action="{{ route('items.update', ['item' => $item->id]) }}">
-                @csrf
-                @method('PUT')
-                
-                <x-auth-validation-errors :errors="$errors" />
-                
-                <div class="card-body">
-                    <div class="form-group ">
-                        <label for="name">名前（商品）</label>
-                        <input type="text" class="form-control" id="name" name="name" required value="{{ $item->name }}">
+                    <section class="text-gray-600 body-font relative">
+                    <div class="container px-2 py-8 mx-auto">
+                        <div class="flex flex-col text-center w-full">
+                        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">商品編集</h1>
+                        <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
+                        </div>
+                        
+                        <form method="POST" action="{{ route('items.update', ['item' => $item->id]) }}">
+                            @csrf
+                            @method('PUT')
+
+                        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                        <div class="flex flex-wrap -m-2">
+                            <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">名前（商品）※必須</label>
+                                <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded 
+                                border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 
+                                text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" value="{{ $item->name }}">
+                            </div>
+                            </div>
+
+                            <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="type" class="leading-7 text-sm text-gray-600">種別 ※必須</label>
+                                <input type="number" id="type" name="type" required value="{{ $item->type }}" class="w-full bg-gray-100 bg-opacity-50 rounded border 
+                                border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base 
+                                outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" >
+                            </div>
+                            </div>
+
+                            <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="price" class="leading-7 text-sm text-gray-600">価格（円）※必須</label>
+                                <input type="number" id="price" name="price" required value="{{ $item->price }}" class="w-full bg-gray-100 bg-opacity-50 rounded border 
+                                border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base 
+                                outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            </div>
+
+                            <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="detail" class="leading-7 text-sm text-gray-600">商品詳細 ※必須</label>
+                                <textarea id="detail" name="detail" rows="3" required class="w-full bg-gray-100 bg-opacity-50 rounded border
+                                border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 
+                                py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $item->detail }}</textarea>
+                            </div>
+                        </div>
+
+                            <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="message" class="leading-7 text-sm text-gray-600">画像</label>
+                                <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" >
+                            
+                            </div>
+                            </div>
+
+                            <div class="p-2 w-full flex justify-around mt-4">
+                            <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
+                            border-0 py-2 px-8 focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>
+
+                            <button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none 
+                            hover:bg-green-400 rounded text-sm">更新する</button>                        
+                            </div>
+
+
+                        </div>
+                        </div>
+                    </form>
                     </div>
-
-                    <div class="form-group">
-                        <label for="type">種別</label>
-                        <input type="number" class="form-control" id="type" name="type" required value="{{ $item->type }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">価格</label>
-                        <input type="number" class="form-control" id="price" name="price" required value="{{ $item->price }}">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="detail">詳細</label>
-                        <textarea type="textarea" class="form-control" id="detail" name="detail" placeholder="商品説明" value="{{ $item->detail }}"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="image">画像</label>
-                        <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg">
-                    </div>
-
+                    </section>     
                 </div>
-                <div class="card-footerb text-center m-4">
-                    <a href="{{ url('items') }}" class="btn btn-secondary">戻る</a>
-                    <button type="submit" class="btn btn-success">更新する</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 
+    </div>
+
+</div>
 @endsection
+

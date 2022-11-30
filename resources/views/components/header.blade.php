@@ -14,7 +14,7 @@
       </li>
 
       <li class="nav-item ml-2">
-        <a href="{{ url('items/create') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品新規登録画面</a>
+        <a href="{{ url('items/create') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品登録画面</a>
       </li>
 
       <li class="nav-item ml-2">
