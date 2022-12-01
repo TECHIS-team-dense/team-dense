@@ -46,15 +46,19 @@
                       <div class="flex flex-wrap -m-2">
                         <div class="">
                           <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center sm:text-left">
-                            <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4" src="https://dummyimage.com/200x200">
-                            <div class="flex-grow sm:pl-8">
-                              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">名前：{{ $item->name }}</h1>
-                              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">種別：{{ $item->type }}</h1>
-                              <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
 
-                              <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p>
-                              <span class="inline-flex">
-                              </span>
+                            @if(empty($item->filename))
+                                <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover 
+                                object-center sm:mb-0 mb-4" src={{ asset("images/noimage3.png")}}>
+                              @else
+                                <img src="{{ asset('storage/items/' . $item->filename) }}">
+                              @endif
+                              
+                                <div class="flex-grow sm:pl-8">
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">名前：{{ $item->name }}</h1>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">種別：{{ $item->type }}</h1>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
+                                <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p>
                             </div>
                           </div>
                         </div>

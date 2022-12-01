@@ -26,13 +26,14 @@
         @endif
       </script>
 
-      <div class="card">
+      {{-- <div class="card">
           <div class="card-header">
               <div class="card-tools">
-                <div class="container">
-                  <div class="justify-content-center">
-                  <section class="text-gray-600 body-font">
-                    <div class="container py-3">
+                <div class="container"> --}}
+                  {{-- <div class="justify-content-center"> --}}
+                  {{-- <section class="text-gray-600 body-font"> --}}
+                    {{-- <div class="container py-3"> --}}
+                      
                       <div class="flex flex-col text-center w-full mb-8">
                         <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900">商品一覧</h1>
                         <div class="text-center m-1 p-4">
@@ -56,10 +57,10 @@
                           <tbody>
                             @foreach ($items as $item)
                             <tr>
-                              <td class="px-4 py-3">{{ $item->id }}</td>
+                              <td class="px-4 py-3 text-gray-900 title-font font-medium border-gray-200">{{ $item->id }}</td>
                               <td><a href="{{ route('items.show', ['item' => $item->id]) }}">{{ $item->name }}</a></td>
-                              <td class="px-4 py-3">{{ $item->type }}</td>
-                              <td class="px-4 py-3">{{ number_format($item->price) }}</td>
+                              <td class="text-gray-900 title-font text-lg font-medium">{{ $item->type }}</td>
+                              <td class="text-gray-900 title-font text-lg font-medium">{{ number_format($item->price) }}</td>
                               <td>
                                 <button onclick="location.href='{{ route('items.edit', ['item' => $item->id ]) }}'"  class="text-white bg-green-500 border-0 py-2 px-3
                                   focus:outline-none hover:bg-green-600 rounded text-sm"">編集</button>
@@ -83,7 +84,7 @@
                         </div>
                       </div>
                     </div>
-                  </section>    
+                  {{-- </section>    
                 </div>
               </div>
             </div>
@@ -91,7 +92,7 @@
 
         </div>
     </div>
-  </div>
+  </div> --}}
 
 </div>
 @endsection

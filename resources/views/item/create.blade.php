@@ -18,7 +18,7 @@
                       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">商品新規登録</h1>
                       <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
                     </div>
-                  <form method="POST" action="{{ route('items.store') }}">
+                  <form method="POST" action="{{ route('items.store') }}" enctype="multipart/form-data">
                       @csrf
 
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -61,9 +61,8 @@
 
                         <div class="p-2 w-full">
                           <div class="relative">
-                            <label for="message" class="leading-7 text-sm text-gray-600">画像</label>
-                            <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" >
-                          
+                            <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
+                            <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg">
                           </div>
                         </div>
 

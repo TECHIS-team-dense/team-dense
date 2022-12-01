@@ -51,7 +51,7 @@
                                     <circle cx="12" cy="7" r="4"></circle>
                                 </svg>
                                 </div>
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2"><a href="{{ route('expired-items.index') }}">商品登録画面</a></h2>
+                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2"><a href="{{ route('expired-items.index') }}">ゴミ箱（商品）</a></h2>
                                 <p class="leading-relaxed text-base">削除した商品を確認することができます。またデータを完全削除することができます。</p>
                             </div>
                             </div>

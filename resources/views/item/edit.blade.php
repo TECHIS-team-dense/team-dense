@@ -19,7 +19,7 @@
                         <p class="lg:w-2/3 mx-auto leading-relaxed text-base"></p>
                         </div>
                         
-                        <form method="POST" action="{{ route('items.update', ['item' => $item->id]) }}">
+                        <form method="POST" action="{{ route('items.update', ['item' => $item->id]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -62,12 +62,17 @@
                         </div>
 
                             <div class="p-2 w-full">
-                            <div class="relative">
-                                <label for="message" class="leading-7 text-sm text-gray-600">画像</label>
-                                <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" >
-                            
+                                <div class="relative">
+                                    <div class="">
+                                        <p>現在の登録画像</p>
+                                        <x-image-thumbnail :filename="$item->filename" />
+                                    </div>
+                                    <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
+                                    <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                                    <p id="preview">選択画像プレビュー</p>
+                                </div>
                             </div>
-                            </div>
+
 
                             <div class="p-2 w-full flex justify-around mt-4">
                             <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
@@ -92,4 +97,29 @@
 
 </div>
 @endsection
+
+<script>
+    
+    function imgPreView(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        var preview = document.getElementById("preview");
+        var previewImage = document.getElementById("previewImage");
+        
+        if(previewImage != null) {
+            preview.removeChild(previewImage);
+        }
+        reader.onload = function(event) {
+            var img = document.createElement("img");
+            img.setAttribute("src", reader.result, );
+            img.setAttribute("width", "100px");
+            img.setAttribute("width", "150px");
+            img.setAttribute("id", "previewImage");
+            preview.appendChild(img);
+        };
+        
+        reader.readAsDataURL(file);
+    }
+    
+    </script>
 
