@@ -8,6 +8,7 @@ use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
+use App\Http\Requests\UploadImageRequest;
 
 class ItemsController extends Controller
 {
@@ -101,7 +102,7 @@ class ItemsController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UploadImageRequest $request, $id)
     {
 
     //画像 アップデート兼リサイズ
