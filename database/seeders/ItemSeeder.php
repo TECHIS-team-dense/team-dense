@@ -19,9 +19,9 @@ class ItemSeeder extends Seeder
             [
                 'id' => 1,
                 'owner_id' => 1,
-                'name' => 'トマト',
+                'name' => 'アルファード',
                 'type' =>'2',
-                'price' =>'50000',
+                'price' =>'5000000',
                 'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
             ],
 
