@@ -9,11 +9,20 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- cssをインポート -->
-        <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     </head>
     <body>
         @include('components.header')
-        <main class="py-4">
+        <main class="p-4">
             @yield('content')
         </main>
         <script src="{{ mix('js/app.js') }}"></script>

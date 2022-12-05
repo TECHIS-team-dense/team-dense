@@ -7,11 +7,20 @@
   <div class="collapse navbar-collapse" id="Navber">
     <ul class="navbar-nav">
       <li class="nav-item ml-2">
-        <a href="#" class="nav-link text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">項目追加</a>
+        <a href="{{ url('home') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">ホーム画面</a>
       </li>
       <li class="nav-item ml-2">
-        <a href="#" class="nav-link text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">項目追加</a>
+        <a href="{{ url('items') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品一覧画面</a>
       </li>
+
+      <li class="nav-item ml-2">
+        <a href="{{ url('items/create') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品登録画面</a>
+      </li>
+
+      <li class="nav-item ml-2">
+        <a href="{{ url('expired-items/index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">ゴミ箱（商品）</a>
+      </li>
+      
     </ul>
 
     <ul class="navbar-nav ml-auto mr-5">
