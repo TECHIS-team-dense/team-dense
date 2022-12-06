@@ -28,12 +28,7 @@
     </script>
 
       <div class="card">
-        {{-- <div class="text-center m-2 p-2">
-          <a href="{{ url('items/create') }}" class="btn btn-success text-center">商品新規登録</a>
-        </div> --}}
-
           <div class="card-header">
-
             <div class="float - right ">
             </div>
               <div class="card-tools">
@@ -60,8 +55,13 @@
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
                                 <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p>
                             </div>
+                            
                           </div>
                         </div>
+                      </div>
+                      <div class="p-2 w-full flex justify-around mt-4">
+                        <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
+                        border-0 py-2 px-8 focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>                  
                       </div>
                     </div>
                   </section>
@@ -81,7 +81,6 @@
           </div>
       </div>
   </div>
-
 </div>
 @endsection
 
@@ -93,3 +92,4 @@
       }
   }
 </script>
+

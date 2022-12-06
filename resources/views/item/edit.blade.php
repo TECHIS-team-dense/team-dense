@@ -73,7 +73,6 @@
                                 </div>
                             </div>
 
-
                             <div class="p-2 w-full flex justify-around mt-4">
                             <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
                             border-0 py-2 px-8 focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>
@@ -81,7 +80,6 @@
                             <button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none 
                             hover:bg-green-400 rounded text-sm">更新する</button>                        
                             </div>
-
 
                         </div>
                         </div>

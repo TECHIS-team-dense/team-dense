@@ -62,7 +62,8 @@
                         <div class="p-2 w-full">
                           <div class="relative">
                             <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
-                            <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg">
+                            <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                            <p id="preview" class="pt-3">選択画像プレビュー</p>
                           </div>
                         </div>
 
@@ -89,4 +90,29 @@
 
 </div>
 @endsection
+
+<script>
+    
+  function imgPreView(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      var preview = document.getElementById("preview");
+      var previewImage = document.getElementById("previewImage");
+      
+      if(previewImage != null) {
+          preview.removeChild(previewImage);
+      }
+      reader.onload = function(event) {
+          var img = document.createElement("img");
+          img.setAttribute("src", reader.result, );
+          img.setAttribute("width", "100px");
+          img.setAttribute("width", "150px");
+          img.setAttribute("id", "previewImage");
+          preview.appendChild(img);
+      };
+      
+      reader.readAsDataURL(file);
+  }
+  
+  </script>
 

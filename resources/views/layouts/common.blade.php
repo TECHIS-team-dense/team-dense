@@ -18,13 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    @yield('css')
     </head>
     <body>
         @include('components.header')
         <main class="p-4">
             @yield('content')
         </main>
+            @yield('script')
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
