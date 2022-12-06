@@ -2,30 +2,30 @@
 
 @section('title', 'ホーム画面')
 
+@section('css')
+<link href="{{ asset('css/slider.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+/>
+@endsection
+
+@section('script')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="{{ asset('js/slider.js')}}"></script>
+    <script src="{{ asset('js/confirm.js')}}"></script>
+    <script src="{{ asset('js/slider.js')}}"></script>
+@endsection
+
 @section('content')
 <h3 class="pl-5"></h3>
 <div class="row">
-  
   <div class="col-12">
 
-      {{-- <x-flash-message status="session('status')" /> --}}
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       @php 
       if(session('status') === 'register'){ $bgColor = 'alert-info';} 
       @endphp 
-          
-      <script>
-        @if (session('message'))
-            $(function() {
-                toastr.options = {
-                  // "positionClass": "“toast-bottom-right”"
-                }
-                toastr.info('{{ session('message') }}');
-            });
-        @endif
-    </script>
 
       <div class="card">
           <div class="card-header">
@@ -82,14 +82,26 @@
       </div>
   </div>
 </div>
+<!-- スライダーのコンテナ -->
+<div class="swiper">
+  <!-- 必要に応じたwrapper -->
+  <div class="swiper-wrapper">
+  <!-- スライド -->
+  <div class="swiper-slide"><img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover 
+    object-center sm:mb-0 mb-4" src={{ asset("images/noimage3.png")}}></div>
+  <div class="swiper-slide"><img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover 
+    object-center sm:mb-0 mb-4" src={{ asset("images/tyesu.jpg")}}></div>
+  <div class="swiper-slide"><img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover 
+    object-center sm:mb-0 mb-4" src={{ asset("images/noimage3.png")}}></div>
+  </div>
+  <!-- 必要に応じてページネーション -->
+  <div class="swiper-pagination"></div>
+  <!-- 必要に応じてナビボタン -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
 @endsection
 
-<script>
-  function deletePost(e) {
-      'use strict';
-      if (confirm('本当に削除してもいいですか?')) {
-      document.getElementById('delete_' + e.dataset.id).submit();
-      }
-  }
-</script>
+
+
 
