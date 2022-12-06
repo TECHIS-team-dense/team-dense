@@ -79,8 +79,7 @@ class ItemsController extends Controller
 
         return redirect('/items')
         ->with(['message' => '商品登録が完了しております。',
-        'status' => 'register']);
-
+        'status' => 'info']);
         }
         return view('items.create');
     }
@@ -140,8 +139,8 @@ class ItemsController extends Controller
         
 
         return redirect('/items')
-        ->with(['message' => '商品編集が完了しました。']);
-
+        ->with(['message' => '商品登録が完了しております。',
+        'status' => 'info']);
     }
 
     
@@ -150,7 +149,8 @@ class ItemsController extends Controller
         Item::findOrFail($id)->delete();
 
         return redirect('/items')
-        ->with(['message' => 'オーナ情報を削除しました。']);
+        ->with(['message' => '商品を削除しました。',
+        'status' => 'alert']);
     }
 
     public function expiredItemIndex(){ 
@@ -163,6 +163,7 @@ class ItemsController extends Controller
 
         Item::onlyTrashed()->findOrFail($id)->forceDelete(); 
         return redirect('expired-items/index')
-        ->with(['message' => '完全に削除しました。']);
+        ->with(['message' => '商品を完全に削除しました。',
+        'status' => 'alert']);
     }
 }

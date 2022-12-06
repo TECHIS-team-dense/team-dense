@@ -3,19 +3,16 @@
 @section('title', 'ホーム画面')
 
 @section('css')
-<link href="{{ asset('css/slider.css') }}" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
-/>
+  <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 @endsection
 
 @section('script')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="{{ asset('js/slider.js')}}"></script>
-    <script src="{{ asset('js/confirm.js')}}"></script>
-    <script src="{{ asset('js/slider.js')}}"></script>
+  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+  <script src="{{ asset('js/slider.js')}}"></script>
+  <script src="{{ asset('js/modal.js')}}"></script>
 @endsection
 
 @section('content')
@@ -53,9 +50,31 @@
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">名前：{{ $item->name }}</h1>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">種別：{{ $item->type }}</h1>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
-                                <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p>
-                            </div>
-                            
+                                {{-- <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p> --}}
+                                <div>
+                                  <section class="section">
+                                      <button type="button" data-micromodal-trigger="modal-1" class="text-white bg-green-500 border-0 py-2 px-3
+                                      focus:outline-none hover:bg-green-600 rounded text-sm">詳細</button>
+                                  </div>
+                                  </section>
+
+                                  {{-- <x-modal  item /> --}}
+                                  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+                                    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                                      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+                                        <header class="modal__header">
+                                          <h2 class="modal__title" id="modal-1-title">
+                                            詳細
+                                          </h2>
+                                          <button type="button" class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+                                        </header>
+                                        <main class="modal__content" id="modal-1-content">
+                                            <p class="title-font text-lg font-medium text-gray-900 mb-3">詳細：{{ $item->detail }}</p>
+                                        </main>
+                                      </div>
+                                    </div>
+                                  </div>
+
                           </div>
                         </div>
                       </div>
@@ -67,17 +86,6 @@
                   </section>
                 </div>
               </div>
-          <div class="table-responsive">
-              <table class="table table-striped">
-                  <thead>
-
-                  </thead>
-                  <tbody>
-                      <tr>
-                      </tr>
-                  </tbody>
-              </table>
-            </div>
           </div>
       </div>
   </div>

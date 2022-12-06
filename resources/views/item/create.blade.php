@@ -2,6 +2,10 @@
 
 @section('title', 'ホーム画面')
 
+@section('script')
+  <script src="{{ asset('js/preview.js')}}"></script>
+@endsection
+
 @section('content')
 <div class="row">
   <div class="col-12">

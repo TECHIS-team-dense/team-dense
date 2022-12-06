@@ -1,15 +1,14 @@
-@props(['status' => 'register']) 
+@props(['status' => 'info'])
 
-@php 
-  if(session('status') === 'register'){ $bgColor = 'alert-primary';} 
-  if(session('status') === 'alert'){$bgColor = 'alert-danger';} 
-  if(session('status') === 'Restoration'){$bgColor = 'alert-success';} 
-@endphp 
+@php
+  if(session('status') === 'info'){$bgColor = 'bg-green-400';}
+  if(session('status') === 'alert'){$bgColor = 'bg-red-500';}
+@endphp
 
-@if(session('message')) 
-  <h4 class="{{ $bgColor }} text-center alert col-md-5 m-4 text-white"> 
-    {{ session('message' )}} 
-  </h4> 
+@if (session('message'))
+  <div class="{{ $bgColor }} text-center w-1/2 mx-auto p-2 my-4 text-white">
+    {{ session('message') }}
+  </div>
 @endif
 
 
