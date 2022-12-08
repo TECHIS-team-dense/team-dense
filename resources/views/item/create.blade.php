@@ -13,7 +13,6 @@
           <div class="card-header">
             <div class="card-tools">
               <div class="container">
-
                 <x-auth-validation-errors :errors="$errors" />
 
                 <section class="text-gray-600 body-font relative">
@@ -66,11 +65,14 @@
                         <div class="p-2 w-full">
                           <div class="relative">
                             <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
-                            <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
-                            <p id="preview" class="pt-3">選択画像プレビュー</p>
+                            <input type="file" class="form-control"  id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)" >
+                            <label for="image1" class="leading-7 text-sm text-gray-600">画像</label>
+                            <input type="file" class="form-control"  id="image1" name="image1" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event) ">
+                            <label for="image2" class="leading-7 text-sm text-gray-600">画像</label>
+                            <input type="file" class="form-control"  id="image2" name="image2" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                            {{-- <p id="preview" class="pt-3">選択画像プレビュー</p> --}}
                           </div>
                         </div>
-
                         <div class="p-2 w-full flex justify-around mt-4">
                           <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
                           border-0 py-2 px-8 focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>
@@ -78,8 +80,6 @@
                           <button type="submit" class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none 
                           hover:bg-green-400 rounded text-sm">更新する</button>                        
                         </div>
-
-
                       </div>
                     </div>
                   </form>
@@ -89,13 +89,12 @@
             </div>
           </div>
       </div>
-
   </div>
 
 </div>
 @endsection
 
-<script>
+{{-- <script>
     
   function imgPreView(event) {
       var file = event.target.files[0];
@@ -118,5 +117,5 @@
       reader.readAsDataURL(file);
   }
   
-  </script>
+  </script> --}}
 

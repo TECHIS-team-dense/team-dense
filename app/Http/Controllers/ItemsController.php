@@ -20,7 +20,7 @@ class ItemsController extends Controller
     public function index()
     {
         // 商品一覧取得
-        $items = Item::select('id', 'name', 'type', 'price', 'detail', 'filename')
+        $items = Item::select('id', 'name', 'type', 'price', 'detail')
         ->paginate(7);
 
         return view('item.index', compact('items'));
@@ -37,6 +37,9 @@ class ItemsController extends Controller
     public function store(Request $request)
     {
         $fileNameToStore = null;
+        $fileNameToStore_one = null;
+        $fileNameToStore_two = null;
+        $fileNameToStore_three = null;
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
@@ -44,21 +47,52 @@ class ItemsController extends Controller
                 'name' => 'required|max:30',
                 'type' => 'required|max:30',
                 'price' => 'required|numeric',
-                'detail' => 'required|max:100',
+                'detail' => 'required|max:300',
             ]);
 
             $imageFile = $request->image;
             // dd($imageFile);
             if(!is_null($imageFile) && $imageFile->isValid() ) {
                 $fileName = uniqid(rand(). '_');
+                // dd($fileName);
                 $extension = $imageFile->extension();
                 $fileNameToStore = $fileName. '.'. $extension; //ファイル名
     
                 $resizedImage = InterventionImage::make($imageFile)
-                ->resize(150, 150)
+                ->resize(300, 300)
                 ->encode();
+
+                // dd($fileNameToStore, $resizedImage);
     
                 Storage::put('public/items/' . $fileNameToStore, $resizedImage); //取得したファイル名を保存
+            }
+
+            $imageFile_one = $request->image1;
+
+            if(!is_null($imageFile_one) && $imageFile_one->isValid() ) {
+                $fileName_one = uniqid(rand(). '_');
+                $extension = $imageFile_one->extension();
+                $fileNameToStore_one = $fileName_one. '.'. $extension; //ファイル名
+    
+                $resizedImage_one = InterventionImage::make($imageFile_one)
+                ->resize(300, 300)
+                ->encode();
+
+                Storage::put('public/items/' . $fileNameToStore_one, $resizedImage_one); //取得したファイル名を保存
+            }
+
+            $imageFile_two = $request->image2;
+
+            if(!is_null($imageFile_two) && $imageFile_two->isValid() ) {
+                $fileName_two = uniqid(rand(). '_');
+                $extension = $imageFile_two->extension();
+                $fileNameToStore_two = $fileName_two. '.'. $extension; //ファイル名
+    
+                $resizedImage_two = InterventionImage::make($imageFile_two)
+                ->resize(300, 300)
+                ->encode();
+
+                Storage::put('public/items/' . $fileNameToStore_two, $resizedImage_two); //取得したファイル名を保存
             }
 
         Item::create([
@@ -68,17 +102,12 @@ class ItemsController extends Controller
             'detail' => $request->detail,
             'price' => $request->price,
             'filename' => $fileNameToStore,
-
-            // if(is_null($fileNameToStore)){
-            //     'filename' = $fileNameToStore;
-            // } else {
-            //     return null;
-            // }
-            
+            'filename_one' => $fileNameToStore_one,
+            'filename_two' => $fileNameToStore_two,
         ]);
 
         return redirect('/items')
-        ->with(['message' => '商品登録が完了しております。',
+        ->with(['message' => '商品登録が完了しました。',
         'status' => 'info']);
         }
         return view('items.create');
@@ -96,7 +125,7 @@ class ItemsController extends Controller
     public function edit($id)
     {
         $item = Item::findOrFail($id);
-        
+        // dd($item);
         return view('item.edit', compact('item'));
     }
 
@@ -110,13 +139,39 @@ class ItemsController extends Controller
         $fileName = uniqid(rand(). '_');
         $extension = $imageFile->extension();
         $fileNameToStore = $fileName. '.'. $extension;
-
         $resizedImage = InterventionImage::make($imageFile)
-        ->resize(200, 200)
+        ->resize(500, 500)
         ->encode();
 
         Storage::put('public/items/' . $fileNameToStore, $resizedImage);
-        
+        }
+
+        $imageFile_one = $request->image1;
+
+        if(!is_null($imageFile_one) && $imageFile_one->isValid() ) {
+            $fileName_one = uniqid(rand(). '_');
+            $extension = $imageFile_one->extension();
+            $fileNameToStore_one = $fileName_one. '.'. $extension; //ファイル名
+
+            $resizedImage_one = InterventionImage::make($imageFile_one)
+            ->resize(500, 500)
+            ->encode();
+
+            Storage::put('public/items/' . $fileNameToStore_one, $resizedImage_one); //取得したファイル名を保存
+        }
+
+        $imageFile_two = $request->image2;
+
+        if(!is_null($imageFile_two) && $imageFile_two->isValid() ) {
+            $fileName_two = uniqid(rand(). '_');
+            $extension = $imageFile_two->extension();
+            $fileNameToStore_two = $fileName_two. '.'. $extension; //ファイル名
+
+            $resizedImage_two = InterventionImage::make($imageFile_two)
+            ->resize(300, 300)
+            ->encode();
+
+            Storage::put('public/items/' . $fileNameToStore_two, $resizedImage_two); //取得したファイル名を保存
         }
 
         $item = Item::findOrFail($id);
@@ -127,6 +182,12 @@ class ItemsController extends Controller
         if(!is_null($imageFile) && $imageFile->isValid()){
             $item->filename = $fileNameToStore;
         }
+        if(!is_null($imageFile_one) && $imageFile_one->isValid()){
+            $item->filename_one = $fileNameToStore_one;
+        }
+        if(!is_null($imageFile_two) && $imageFile_two->isValid()){
+            $item->filename_two = $fileNameToStore_two;
+        }
         $item->save();
 
         $this->validate($request, [
@@ -135,12 +196,14 @@ class ItemsController extends Controller
             'price' => 'required|numeric',
             'detail' => 'required|max:100',
         ]);
-
         
+        // $count = [$imageFile, $imageFile_one, $imageFile_two, $imageFile_three];
+        // dd($count);
 
         return redirect('/items')
-        ->with(['message' => '商品登録が完了しております。',
+        ->with(['message' => '商品編集が完了しました。',
         'status' => 'info']);
+
     }
 
     

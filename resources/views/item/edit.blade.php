@@ -64,12 +64,40 @@
                             <div class="p-2 w-full">
                                 <div class="relative">
                                     <div class="">
-                                        <p>現在の登録画像</p>
-                                        <x-image-thumbnail :filename="$item->filename" />
                                     </div>
-                                    <label for="image" class="leading-7 text-sm text-gray-600">画像</label>
-                                    <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
-                                    <p id="preview">選択画像プレビュー</p>
+                                    {{-- <x-image-thumbnail :filename="$item->filename" /> --}}
+                                    <p>画像1:現在の登録</p>
+                                    <div class="">
+                                        @if(empty($item->filename))
+                                            <img src="{{ asset('images/noimage3.png') }}" width="100" height="100" >
+                                        @else
+                                            <img src="{{ asset('storage/items/'. $item->filename) }}" width="100" height="100" >
+                                        @endif
+                                        <label for="image" class="leading-7 text-sm text-gray-600">画像1</label>
+                                        <input type="file" class="form-control" id="image" name="image" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                                    </div>
+
+                                    <p>画像2:現在の登録</p>
+                                    <div>
+                                        @if(empty($item->filename_one))
+                                            <img src="{{ asset('images/noimage3.png') }}" width="100" height="100" >
+                                        @else
+                                            <img src="{{ asset('storage/items/'. $item->filename_one) }}" width="100" height="100" >
+                                        @endif
+                                        <label for="image" class="leading-7 text-sm text-gray-600">画像2</label>
+                                        <input type="file" class="form-control" id="image1" name="image1" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                                    </div>
+
+                                    <p>画像3:現在の登録</p>
+                                    <div>
+                                        @if(empty($item->filename_two))
+                                            <img src="{{ asset('images/noimage3.png') }}" width="100" height="100" >
+                                        @else
+                                            <img src="{{ asset('storage/items/'. $item->filename_two) }}" width="100" height="100" >
+                                        @endif
+                                        <label for="image" class="leading-7 text-sm text-gray-600">画像3</label>
+                                        <input type="file" class="form-control" id="image2" name="image2" accept="image/png/jpeg,image/jpg" onChange="imgPreView(event)">
+                                    </div>
                                 </div>
                             </div>
 

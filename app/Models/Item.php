@@ -22,6 +22,9 @@ class Item extends Model
         'type',
         'detail',
         'filename',
+        'filename_one',
+        'filename_two',
+        'filename_three',
         'price',
     ];
 
