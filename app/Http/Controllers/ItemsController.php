@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
@@ -29,8 +30,11 @@ class ItemsController extends Controller
 
     public function create()
     {
+        //イーガーローディング、リレーション
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
 
-        return view('item.create');
+        return view('item.create', compact('categories'));
     }
 
 
@@ -44,10 +48,11 @@ class ItemsController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:30',
+                'name' => 'required|string|max:30',
                 'type' => 'required|max:30',
-                'price' => 'required|numeric',
-                'detail' => 'required|max:300',
+                'price' => 'required|integer',
+                'detail' => 'required|string|max:500',
+                'category' => 'required|exists:secondary_categories,id',
             ]);
 
             $imageFile = $request->image;
@@ -96,11 +101,12 @@ class ItemsController extends Controller
             }
 
         Item::create([
-            'owner_id' => Auth::id(),
+            // 'owner_id' => Auth::id(),
             'name' => $request->name,
             'type' => $request->type,
             'detail' => $request->detail,
             'price' => $request->price,
+            'secondary_category_id' => $request->category,
             'filename' => $fileNameToStore,
             'filename_one' => $fileNameToStore_one,
             'filename_two' => $fileNameToStore_two,
@@ -110,7 +116,7 @@ class ItemsController extends Controller
         ->with(['message' => '商品登録が完了しました。',
         'status' => 'info']);
         }
-        return view('items.create');
+        // return view('items.create');
     }
 
 
@@ -126,12 +132,23 @@ class ItemsController extends Controller
     {
         $item = Item::findOrFail($id);
         // dd($item);
-        return view('item.edit', compact('item'));
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
+
+        return view('item.edit', compact('item', 'categories'));
     }
 
 
     public function update(UploadImageRequest $request, $id)
     {
+
+    $this->validate($request, [
+        'name' => 'required|string|max:30',
+        'type' => 'required|max:30',
+        'price' => 'required|integer',
+        'detail' => 'required|string|max:500',
+        'category' => 'required|exists:secondary_categories,id',
+    ]);
 
     //画像 アップデート兼リサイズ
     $imageFile = $request->image;
@@ -175,30 +192,21 @@ class ItemsController extends Controller
         }
 
         $item = Item::findOrFail($id);
-        $item->name = $request->name;
-        $item->type = $request->type;
-        $item->price = $request->price;
-        $item->detail = $request->detail;
-        if(!is_null($imageFile) && $imageFile->isValid()){
-            $item->filename = $fileNameToStore;
-        }
-        if(!is_null($imageFile_one) && $imageFile_one->isValid()){
-            $item->filename_one = $fileNameToStore_one;
-        }
-        if(!is_null($imageFile_two) && $imageFile_two->isValid()){
-            $item->filename_two = $fileNameToStore_two;
-        }
-        $item->save();
-
-        $this->validate($request, [
-            'name' => 'required|max:30',
-            'type' => 'required|max:30',
-            'price' => 'required|numeric',
-            'detail' => 'required|max:100',
-        ]);
-        
-        // $count = [$imageFile, $imageFile_one, $imageFile_two, $imageFile_three];
-        // dd($count);
+            $item->name = $request->name;
+            $item->type = $request->type;
+            $item->price = $request->price;
+            $item->detail = $request->detail;
+            $item->secondary_category_id = $request->category;
+            if(!is_null($imageFile) && $imageFile->isValid()){
+                $item->filename = $fileNameToStore;
+            }
+            if(!is_null($imageFile_one) && $imageFile_one->isValid()){
+                $item->filename_one = $fileNameToStore_one;
+            }
+            if(!is_null($imageFile_two) && $imageFile_two->isValid()){
+                $item->filename_two = $fileNameToStore_two;
+            }
+            $item->save();
 
         return redirect('/items')
         ->with(['message' => '商品編集が完了しました。',

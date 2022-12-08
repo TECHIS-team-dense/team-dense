@@ -26,7 +26,7 @@ class CategorySeeder extends Seeder
             ],
 
             [
-                'name' => 'スバル',
+                'name' => 'マツダ',
                 'sort_order' => 3,
             ],
 
