@@ -12,7 +12,7 @@ class SecondaryCategory extends Model
 
     public function primary()
     {
-        return $this->hasMany(PrimaryCategory::class);
+        return $this->belongsTo(PrimaryCategory::class);
 
     }
 }

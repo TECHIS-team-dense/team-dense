@@ -15,7 +15,6 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('owner_id')->unsigned()->index();
             $table->string('name', 100)->index();
             $table->string('status', 100)->default('active');
             $table->smallInteger('type')->nullable();
@@ -25,6 +24,7 @@ class CreateItemsTable extends Migration
             $table->string('filename_two')->nullable();
             $table->string('filename_three')->nullable();
             $table->integer('price');
+            $table->foreignId('secondary_category_id');
             $table->timestamps();
             $table->softDeletes();
         });

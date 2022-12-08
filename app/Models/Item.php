@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\SecondaryCategory;
 
 class Item extends Model
 {
@@ -17,7 +18,6 @@ class Item extends Model
      */
     protected $fillable = [
         'id',
-        'owner_id',
         'name',
         'type',
         'detail',
@@ -26,6 +26,7 @@ class Item extends Model
         'filename_two',
         'filename_three',
         'price',
+        'secondary_category_id',
     ];
 
     /**
@@ -43,4 +44,10 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(SecondaryCategory::class, 'secondary_category_id');
+    }
+
 }
