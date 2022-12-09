@@ -30,7 +30,7 @@
                       <div class="flex flex-col text-center w-full mb-3">
                         <h1 class="text-2xl font-medium title-font mb-4 text-gray-900 tracking-widest">商品詳細</h1>
                       </div>
-                      <div class="">
+                      <div class="border-b pb-5 mb-5 border-gray-600">
                         <div class="">
                           <div class="h-full flex sm:flex-row flex-col items-center justify-center sm: text-center">
 
@@ -76,8 +76,9 @@
 
                               <div class="flex-grow sm:pl-8 text-center pt-2">
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">名前：{{ $item->name }}</h1>
-                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">種別：{{ $item->type }}</h1>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">メーカー：{{ $item->category->primary->name }}</h1>
+                                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">ラインナップ：{{  $item->category->name }}</h1>
                                   <section class="section">
                                       <button type="button" data-micromodal-trigger="modal-1" class="text-white bg-green-500 border-0 py-2 px-3
                                       focus:outline-none hover:bg-green-600 rounded text-sm">詳細</button>
@@ -86,11 +87,18 @@
                               </div>
                           </div>
                         </div>
-                        <div class="p-2 w-full flex justify-around mt-4">
+                        <div class="p-2 w-full flex justify-around mt-4 ">
                           <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
-                          border-0 py-2 px-8  focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>                  
+                            py-2 px-8  focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>                  
                         </div>
                     </div>
+                    
+
+                        <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col" _msthidden="3">
+                          <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0" _msthidden="3">
+                          </div>
+    
+                        </div>
                   </section>
                 </div>
               </div>

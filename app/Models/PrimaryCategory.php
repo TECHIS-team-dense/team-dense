@@ -9,6 +9,7 @@ use App\Models\SecondaryCategory;
 class PrimaryCategory extends Model
 {
     use HasFactory;
+    protected $table = 'primary_categories';
 
     public function secondary()
     {

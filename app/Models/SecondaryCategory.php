@@ -9,10 +9,11 @@ use App\Models\PrimaryCategory;
 class SecondaryCategory extends Model
 {
     use HasFactory;
+    protected $table = 'secondary_categories';
 
     public function primary()
     {
-        return $this->belongsTo(PrimaryCategory::class);
+        return $this->belongsTo(PrimaryCategory::class, 'primary_category_id');
 
     }
 }

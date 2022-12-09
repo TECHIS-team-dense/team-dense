@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Models\PrimaryCategory;
+use App\Models\SecondaryCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 use App\Http\Requests\UploadImageRequest;
+
 
 class ItemsController extends Controller
 {
@@ -18,13 +20,33 @@ class ItemsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        // $category = SecondaryCategory::findOrFail(1);
+        // dd($category);
+        // $primary = $category->where('primary_category_id');
+        // dd($primary);
+        // $primary = PrimaryCategory::findOrFail($category->primary_category_id);
+        // dd($primary);
+
+        // $primary = SecondaryCategory::findOrFail(1);
+        // dd($primary->primary->name);
+
+        $primary = SecondaryCategory::with('primary')
+        ->get();
+        // dd($primary->name);
+
+        //検索に使う
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
+
+
         // 商品一覧取得
-        $items = Item::select('id', 'name', 'type', 'price', 'detail')
+        $items = Item::select('id', 'name', 'type', 'price', 'detail', 'secondary_category_id')
         ->paginate(7);
 
-        return view('item.index', compact('items'));
+        return view('item.index', compact('items','categories', 'primary'));
     }
 
 
@@ -40,16 +62,15 @@ class ItemsController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $fileNameToStore = null;
         $fileNameToStore_one = null;
         $fileNameToStore_two = null;
-        $fileNameToStore_three = null;
         // POSTリクエストのとき
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|string|max:30',
-                'type' => 'required|max:30',
                 'price' => 'required|integer',
                 'detail' => 'required|string|max:500',
                 'category' => 'required|exists:secondary_categories,id',
@@ -103,7 +124,6 @@ class ItemsController extends Controller
         Item::create([
             // 'owner_id' => Auth::id(),
             'name' => $request->name,
-            'type' => $request->type,
             'detail' => $request->detail,
             'price' => $request->price,
             'secondary_category_id' => $request->category,
@@ -124,7 +144,11 @@ class ItemsController extends Controller
     {
         $item = Item::findOrFail($id);
 
-        return view('item.show', compact('item'));
+        
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
+
+        return view('item.show', compact('item', 'categories'));
     }
 
 
@@ -144,7 +168,6 @@ class ItemsController extends Controller
 
     $this->validate($request, [
         'name' => 'required|string|max:30',
-        'type' => 'required|max:30',
         'price' => 'required|integer',
         'detail' => 'required|string|max:500',
         'category' => 'required|exists:secondary_categories,id',
@@ -193,7 +216,6 @@ class ItemsController extends Controller
 
         $item = Item::findOrFail($id);
             $item->name = $request->name;
-            $item->type = $request->type;
             $item->price = $request->price;
             $item->detail = $request->detail;
             $item->secondary_category_id = $request->category;
