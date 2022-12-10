@@ -15,8 +15,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/test', function () {
+    return view('item.test');
 });
 
 Auth::routes();
@@ -28,9 +32,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('items', ItemsController::class)
 ->middleware('auth');
 
-Route::prefix('expired-items') //ソフトデリートのルーティング
+Route::prefix('expired-items') //ソフトデリートのルーティング及び復元、削除
     ->middleware('auth')->group(function(){
         Route::get('index', [ItemsController::class, 'expiredItemIndex'])->name('expired-items.index');
+        Route::post('restore/{item}', [ItemsController::class, 'expiredItemRestore'])->name('expired-items.restore');
         Route::post('destroy/{item}', [ItemsController::class, 'expiredItemDestroy'])->name('expired-items.destroy');
 });
 

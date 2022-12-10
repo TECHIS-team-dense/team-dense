@@ -15,13 +15,16 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('owner_id')->unsigned()->index();
             $table->string('name', 100)->index();
             $table->string('status', 100)->default('active');
             $table->smallInteger('type')->nullable();
             $table->string('detail', 500)->nullable();
             $table->string('filename')->nullable();
-            $table->integer('price');
+            $table->string('filename_one')->nullable();
+            $table->string('filename_two')->nullable();
+            $table->string('filename_three')->nullable();
+            $table->unsignedInteger('price');
+            $table->foreignId('secondary_category_id');
             $table->timestamps();
             $table->softDeletes();
         });
