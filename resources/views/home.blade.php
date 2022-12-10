@@ -52,7 +52,7 @@
                                 </svg>
                                 </div>
                                 <h2 class="text-lg text-gray-900 font-medium title-font mb-2"><a href="{{ route('expired-items.index') }}">ゴミ箱（商品）</a></h2>
-                                <p class="leading-relaxed text-base">削除した商品を確認することができます。またデータを完全削除することができます。</p>
+                                <p class="leading-relaxed text-base">削除した商品を確認することができます。またデータ復元、完全削除することができます。</p>
                             </div>
                             </div>
                             <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -62,8 +62,8 @@
                                     <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"></path>
                                 </svg>
                                 </div>
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">画面</h2>
-                                <p class="leading-relaxed text-base">画面説明</p>
+                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">商品詳細画面</h2>
+                                <p class="leading-relaxed text-base">商品詳細は<a href="{{ route('items.index') }}">商品一覧画面</a>から商品を選択して詳細を確認することができます。</p>
                             </div>
                             </div>
                             <div class="xl:w-1/3 md:w-1/2 p-4">
@@ -73,8 +73,8 @@
                                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
                                 </svg>
                                 </div>
-                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">画面</h2>
-                                <p class="leading-relaxed text-base">画面説明</p>
+                                <h2 class="text-lg text-gray-900 font-medium title-font mb-2">商品編集画面</h2>
+                                <p class="leading-relaxed text-base">商品編集は<a href="{{ route('items.index') }}">商品一覧画面</a>から商品を選択して商品編集をすることができます。</p>
                             </div>
                             </div>
                         </div>

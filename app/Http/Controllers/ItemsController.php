@@ -249,7 +249,15 @@ class ItemsController extends Controller
     public function expiredItemIndex(){ 
         $expiredItems = Item::onlyTrashed()->get(); 
         return view('item.expired-items', compact('expiredItems')); 
-    } 
+    }
+
+    public function expiredItemRestore($id){
+        //復元
+        Item::onlyTrashed()->whereId($id)->restore();
+        return redirect('items')
+        ->with(['message' => '商品情報を復元しました。',
+        'status' => 'info']);
+    }
 
 
     public function expiredItemDestroy($id){ 

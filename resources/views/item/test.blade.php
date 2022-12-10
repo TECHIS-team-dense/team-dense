@@ -6,22 +6,27 @@
   <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
   <link href="{{ asset('css/slider.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.css">
 @endsection
 
-@section('css')
-  
-@endsection
+<!-- SweetAlert2の本体-->
+
+
+
 
 @section('script')
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.5/sweetalert2.min.js"></script>
   <script src="{{ asset('js/slider.js')}}"></script>
   <script src="{{ asset('js/modal.js')}}"></script>
 @endsection
 
 
 @section('content')
-<!-- スライダーのコンテナ -->
+
+{{-- <!-- スライダーのコンテナ -->
 <div class="swiper">
   <!-- 必要に応じたwrapper -->
   <div class="swiper-wrapper">
@@ -38,7 +43,7 @@
   <!-- 必要に応じてナビボタン -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
-</div>
+</div> --}}
 
 <div>
 <section class="section">
@@ -72,10 +77,50 @@
 </div>
 </div>
 
+<td>
+  <a href="#" data-id="1" onclick="deletePost(this)" class="btn btn-danger">削除</a>
+</td>
+
+<div>
+  <input type="button" onclick="warning()" value="アラート">
+</div>
+
+
 @endsection
 
 
+<script>
+  Swal.fire({
+  title: 'タイトル'
+, html : 'textを入力してください。'
+, showCancelButton : true
+, cancelButtonText : 'やめる'
+}).then(function(result) {
+  console.log(result);
+});
+</script>
 
+<script>
+    function warning() {
+      swal({
+        title: '好きなタイトルを入力',
+        text: "好きなテキストを入力",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'OK'
+    }).then(result) => {
+      document.getElementById('delete_' + e.dateset.id);
+    }
+  }
 
+</script>
 
-
+<script>
+  function deletePost(e) {
+      'use strict';
+      $i = document.getElementById('delete_' + 1).submit();
+      console.log($i):
+  }
+</script>

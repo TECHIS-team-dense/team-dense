@@ -88,8 +88,13 @@
                           </div>
                         </div>
                         <div class="p-2 w-full flex justify-around mt-4 ">
+                          <button type="button" onclick="location.href='{{ route('items.edit', ['item' => $item->id ]) }}'" class="text-white bg-green-500 border-0 py-2 px-3
+                            focus:outline-none hover:bg-green-600 rounded text-sm ">編集する</button>                  
+                        </div>
+
+                        <div class="p-2 w-full flex justify-around mt-4 ">
                           <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
-                            py-2 px-8  focus:outline-none hover:bg-gray-500 rounded text-sm">戻る</button>                  
+                            py-2 px-8  focus:outline-none hover:bg-gray-500 rounded text-sm">商品一覧画面</button>                  
                         </div>
                     </div>
                     
