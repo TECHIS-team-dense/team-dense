@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light pl-5 pr-5 pt-2 pb-2">
-  <a class="navbar-brand text-white" href="#">アプリタイトル</a>
+  <a class="navbar-brand text-white" href="#">商品管理システム</a>
   <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -19,6 +19,11 @@
 
       <li class="nav-item ml-2">
         <a href="{{ url('expired-items/index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">ゴミ箱（商品）</a>
+      </li>
+
+      <li class="nav-item ml-2">
+          <a href="{{ route('inquiry.index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">お問い合わせ
+          フォーム</a>
       </li>
       
     </ul>

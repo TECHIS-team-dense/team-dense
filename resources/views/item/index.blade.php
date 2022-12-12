@@ -17,27 +17,6 @@
           <div class="card-header">
             <div class="card-tools">
               <div class="container">
-                {{-- <form method="get" action="{{ route('items.index') }}">
-                  <div class="lg:flex lg:justify-around">
-                    <div class="lg:flex items-center">
-                      <select name="category" class="mb-2 lg:mb-0 custom-select">
-                        <option value="">全て</option>
-                        @foreach ($categories as $category)
-                        <option value="primary:{$category->id}">{{ $category->name }}</option>
-                          @foreach ($category->secondary as $secondary)
-                            <option value="secondary:{{ $secondary->id }}">{{ $secondary->name }}</option>
-                          @endforeach
-                        @endforeach
-                      </select>
-                      <div class="flex space-x-2 item-center">
-                        <div><input name="keyword" class="border border-gray-500 py-2" placeholder="キーワードを入力"></div>
-                        <div><button class="text-white bg-green-500 border-0 py-2 px-3
-                          focus:outline-none hover:bg-green-600 rounded text-sm">検索</button></div>
-                      </div>
-                    </div>
-                  </div>
-                </form> --}}
-
                 <form class="form-inline" method="GET" action="{{ route('items.index') }}">
                     <div class="input-group">
                         <div class="input-group-prepend">
