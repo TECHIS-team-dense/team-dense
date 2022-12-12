@@ -22,31 +22,51 @@ class ItemsController extends Controller
 
     public function index(Request $request)
     {
-
-        // $category = SecondaryCategory::findOrFail(1);
-        // dd($category);
-        // $primary = $category->where('primary_category_id');
-        // dd($primary);
-        // $primary = PrimaryCategory::findOrFail($category->primary_category_id);
-        // dd($primary);
-
-        // $primary = SecondaryCategory::findOrFail(1);
-        // dd($primary->primary->name);
+        // 商品一覧取得
+        $items = Item::select('id', 'name', 'type', 'price', 'detail', 'secondary_category_id')
+        ->paginate(7);
 
         $primary = SecondaryCategory::with('primary')
         ->get();
-        // dd($primary->name);
 
         //検索に使う
         $categories = PrimaryCategory::with('secondary')
         ->get();
 
+        $query = Item::query();
+        //カテゴリー検索
+        if($request->filled('category')){
+            list($categoryType, $categoryID) = explode(':', $request->input('category'));
 
-        // 商品一覧取得
-        $items = Item::select('id', 'name', 'type', 'price', 'detail', 'secondary_category_id')
-        ->paginate(7);
+            if($categoryType === 'primary') {
+                $query->whereHas('category', function($query) use ($categoryID) {
+                    $query->where('primary_category_id', $categoryID);
+                });
+            } else if ($categoryType === 'secondary') {
+                $query->where('secondary_category_id', $categoryID);
+            }
+        }
 
-        return view('item.index', compact('items','categories', 'primary'));
+     // キーワードで絞り込み
+        if ($request->filled('keyword')) {
+            $keyword = '%' . $this->escape($request->input('keyword')) . '%';
+            $query->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', $keyword);
+            });
+    }
+
+            $items = $query->paginate(7);
+
+        return view('item.index', compact('items','categories', 'primary', 'categories'));
+    }
+
+    private function escape(string $value)
+    {
+        return str_replace(
+            ['\\', '%', '_'],
+            ['\\\\', '\\%', '\\_'],
+            $value
+        );
     }
 
 
