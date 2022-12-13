@@ -42,10 +42,10 @@
 
                 <div class="flex flex-col text-center w-full mb-8">
                   <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900 p-4">商品一覧</h1>
-                  <div class="text-center m-1 p-4">
-                    <a href="{{ url('items/create') }}" class="text-white bg-green-500 border-0 py-3 px-6
-                    focus:outline-none hover:bg-green-600 rounded text-sm">商品登録</a>
-                  </div>
+                    <div class="text-center m-1 p-4">
+                      <a href="{{ url('items/create') }}" class="text-white bg-green-500 border-0 py-3 px-6
+                      focus:outline-none hover:bg-green-600 rounded text-sm">商品登録</a>
+                    </div>
                 </div>
                   <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                     <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -60,11 +60,9 @@
                           <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-md bg-green-200"></th>
                         </tr>
                       </thead>
-
                       <tbody>
                         @foreach ($items as $item)
                           <tr>
-
                             <td class="px-4 py-3 text-gray-900 title-font font-medium border-gray-500 bg-gray-200 text-center">{{ $item->id }}</td>
                             <td class="text-gray-900 title-font text-lg font-medium border-gray-500 bg-gray-100">{{ $item->name }}</td>
                             <td class="bg-gray-100 text-center">

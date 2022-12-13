@@ -13,8 +13,6 @@
           <div class="card-header">
             <div class="card-tools">
               <div class="container">
-                <x-auth-validation-errors :errors="$errors" />
-
                 <section class="text-gray-600 body-font relative">
                   <div class="container px-2 py-8 mx-auto">
                     <div class="flex flex-col text-center w-full">
@@ -23,13 +21,13 @@
                     </div>
                   <form method="POST" action="{{ route('items.store') }}" enctype="multipart/form-data">
                       @csrf
-
+                      <x-auth-validation-errors :errors="$errors" />
                     <div class="lg:w-1/2 md:w-2/3 mx-auto">
                       <div class="flex flex-wrap -m-2">
                         <div class="p-2 w-full">
                           <div class="relative">
                             <label for="name" class="leading-7 text-sm text-gray-600">名前（商品）※必須</label>
-                            <input type="text" id="name" name="name" required  class="w-full bg-gray-100 bg-opacity-50 rounded 
+                            <input type="text" id="name" name="name" required class="w-full bg-gray-100 bg-opacity-50 rounded 
                             border border-gray-300 focus:bg-white focus:ring-2 text-base outline-none 
                             text-gray-700 py-1 px-3 leading-8 duration-200 ease-in-out" placeholder="みかん" value="{{ old('name')}}">
                           </div>
