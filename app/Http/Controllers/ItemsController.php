@@ -24,7 +24,7 @@ class ItemsController extends Controller
     {
         // 商品一覧取得
         $items = Item::select('id', 'name', 'type', 'price', 'detail', 'secondary_category_id')
-        ->paginate(7);
+        ->paginate(10);
 
         $primary = SecondaryCategory::with('primary')
         ->get();
@@ -34,6 +34,7 @@ class ItemsController extends Controller
         ->get();
 
         $query = Item::query();
+
         //カテゴリー検索
         if($request->filled('category')){
             list($categoryType, $categoryID) = explode(':', $request->input('category'));
@@ -53,9 +54,10 @@ class ItemsController extends Controller
             $query->where(function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', $keyword);
             });
-    }
+        }
+        
 
-            $items = $query->paginate(7);
+            $items = $query->paginate(10);
 
         return view('item.index', compact('items','categories', 'primary', 'categories'));
     }

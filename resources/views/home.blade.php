@@ -83,7 +83,7 @@
                                                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
                                                 </svg>
                                             </div>
-                                            <h2 class="text-lg text-gray-900 font-medium title-font mb-2"><a href="{{ route('inquiry.index') }}">お問い合わせホーム</a></h2>
+                                            <h2 class="text-lg text-gray-900 font-medium title-font mb-2"><a href="{{ route('inquiry.index') }}">お問い合わせフォーム</a></h2>
                                             <p class="leading-relaxed text-base">商品に関するご質問ができます。ご不明な点等ございましたら、こちらにてお問い合わせください。</p>
                                         </div>
                                     </div>
