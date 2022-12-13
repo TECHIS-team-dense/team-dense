@@ -22,8 +22,7 @@
       </li>
 
       <li class="nav-item ml-2">
-          <a href="{{ route('inquiry.index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">お問い合わせ
-          フォーム</a>
+          <a href="{{ route('inquiry.index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">お問い合わせフォーム</a>
       </li>
       
     </ul>

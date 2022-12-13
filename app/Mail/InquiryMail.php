@@ -27,7 +27,7 @@ class InquiryMail extends Mailable
 
     public function build()
     {
-        return $this->subject($this->name. 'さんからお知らせがあります。')
+        return $this->subject($this->name. 'さんからお問合せがあります。')
         ->text('emails.inquiry');
     }
 }
