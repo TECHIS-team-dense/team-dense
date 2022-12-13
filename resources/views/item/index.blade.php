@@ -17,30 +17,27 @@
           <div class="card-header">
             <div class="card-tools">
               <div class="container">
-
-                {{-- <form method="get" action="{{ route('items.index') }}">
-                  <div class="lg:flex lg:justify-around">
-                    <div class="lg:flex items-center">
-                      <select name="category" class="mb-2 lg:mb-0">
-                        <option value="0" @if(\Request::get('category') === '0') selected @endif>全て</option>
-
-                        @foreach ($categories as $category)
-                        <optgroup label="{{ $category->name }}">
-                          @foreach ($category->secondary as $secondary)
-                            <option value=" {{ $secondary->id }}" @if(\Request::get('category') == $secondary->id ) selected @endif>
-                              {{ $secondary->name }}
-                            </option>
-                          @endforeach
-                        @endforeach
-                      </select> --}}
-
-                      <div class="flex space-x-2 item-center">
-                        <div><input name="keyword" class="border border-gray-500 py-2" placeholder="キーワードを入力"></div>
-                        <div><button class="text-white bg-green-500 border-0 py-2 px-3
-                          focus:outline-none hover:bg-green-600 rounded text-sm">検索</button></div>
-                      </div>
+                <form class="form-inline" method="GET" action="{{ route('items.index') }}">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" name="category">
+                                <option value="">全て</option>
+                                @foreach ($categories as $category)
+                                    <option value="primary:{{$category->id}}" class="font-weight-bold">{{$category->name}}</option>
+                                    @foreach ($category->secondary as $secondary)
+                                        <option value="secondary:{{$secondary->id}}">{{$secondary->name}}</option>
+                                    @endforeach
+                                @endforeach
+                            </select>
+                        </div>
+                        <input type="text" name="keyword" class="form-control" aria-label="Text input with dropdown button" placeholder="キーワード検索">
+                        <div class="input-group-append">
+                            <button type="submit" class="text-white bg-green-500 border-0 py-2 px-3
+                            focus:outline-none hover:bg-green-600 rounded text-sm ">
+                                <i>検索</i>
+                            </button>
+                        </div>
                     </div>
-                  </div>
                 </form>
 
                 <div class="flex flex-col text-center w-full mb-8">

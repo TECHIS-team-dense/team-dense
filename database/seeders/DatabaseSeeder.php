@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             CategorySeeder::class,
             UserSeeder::class,
+            OwnerSeeder::class,
         ]);
     }
 }

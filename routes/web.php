@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,19 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('items', ItemsController::class)
 ->middleware('auth');
+
+Route::resource('inquiry', InquiryController::class)
+->middleware('auth');
+
+Route::get('confirm', [InquiryController::class, 'showConfirm'])->name('confirm');
+Route::post('confirm', [InquiryController::class, 'postConfirm'])->name('confirm');
+Route::get('sent', [InquiryController::class, 'showSentMessage'])->name('sent');
+
+
 
 Route::prefix('expired-items') //ソフトデリートのルーティング及び復元、削除
     ->middleware('auth')->group(function(){
