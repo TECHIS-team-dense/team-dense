@@ -102,9 +102,9 @@ class ItemSeeder extends Seeder
 
             [
                 'id' => 10,
-                'name' => 'アルファード',
+                'name' => 'ノア',
                 'type' =>'3',
-                'price' =>'7752000',
+                'price' =>'3890000',
                 'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
                 'secondary_category_id' => 1,
             ],

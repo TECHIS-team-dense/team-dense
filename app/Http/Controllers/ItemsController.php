@@ -143,7 +143,7 @@ class ItemsController extends Controller
                 Storage::put('public/items/' . $fileNameToStore_two, $resizedImage_two); //取得したファイル名を保存
             }
 
-        Item::create([
+        $item = Item::create([
             // 'owner_id' => Auth::id(),
             'name' => $request->name,
             'detail' => $request->detail,
@@ -154,8 +154,10 @@ class ItemsController extends Controller
             'filename_two' => $fileNameToStore_two,
         ]);
 
+        $name = $item->name;
+
         return redirect('/items')
-        ->with(['message' => '商品登録が完了しました。',
+        ->with(['message' => "$name"."を商品登録しました。",
         'status' => 'info']);
         }
         // return view('items.create');
@@ -252,8 +254,11 @@ class ItemsController extends Controller
             }
             $item->save();
 
+            $name = $request->name;
+            // dd($name);
+
         return redirect('/items')
-        ->with(['message' => '商品編集が完了しました。',
+        ->with(['message' => "$name". "の編集が完了しました。",
         'status' => 'info']);
 
     }

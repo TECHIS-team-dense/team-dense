@@ -10,7 +10,7 @@
           <button type="button" class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
         <main class="modal__content" id="modal-1-content">
-            <p class="title-font text-lg font-medium text-gray-900 mb-3">{{ $item->detail }}</p>
+            <p class="title-font text-lg font-medium text-gray-900 mb-3">{!! nl2br(e($item->detail)) !!}</p>
         </main>
       </div>
     </div>

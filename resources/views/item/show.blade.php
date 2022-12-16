@@ -21,8 +21,6 @@
   <div class="col-12">
       <div class="card">
           <div class="card-header">
-            <div class="float - right ">
-            </div>
               <div class="card-tools">
                 <div class="container">
                   <section class="text-gray-600 body-font">
@@ -36,6 +34,7 @@
 
                               <div class="swiper">
                                 <div class="swiper-wrapper">
+
                                   @if(!empty($item->filename))
                                     <div class="swiper-slide"><img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover 
                                       object-center sm:mb-0 mb-4" src="{{ asset("storage/items/" . $item->filename )}}">
@@ -72,8 +71,7 @@
                                   <div class="swiper-button-prev"></div>
                                   <div class="swiper-button-next"></div>
                               </div>
-                            </div>
-
+                          </div>
                               <div class="flex-grow sm:pl-8 text-center pt-2">
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">名前：{{ $item->name }}</h1>
                                 <h1 class="title-font text-lg font-medium text-gray-900 mb-3">価格：{{ number_format($item->price) }}円</h1>
@@ -91,19 +89,11 @@
                           <button type="button" onclick="location.href='{{ route('items.edit', ['item' => $item->id ]) }}'" class="text-white bg-green-500 border-0 py-2 px-3
                             focus:outline-none hover:bg-green-600 rounded text-sm ">編集する</button>                  
                         </div>
-
                         <div class="p-2 w-full flex justify-around mt-4 ">
                           <button type="button" onclick="location.href='{{ route('items.index')}}'" class="bg-gray-600 text-white 
                             py-2 px-8  focus:outline-none hover:bg-gray-500 rounded text-sm">商品一覧画面</button>                  
                         </div>
                     </div>
-                    
-
-                        <div class="flex items-center lg:w-3/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col" _msthidden="3">
-                          <div class="flex-grow sm:text-left text-center mt-6 sm:mt-0" _msthidden="3">
-                          </div>
-    
-                        </div>
                   </section>
                 </div>
               </div>
