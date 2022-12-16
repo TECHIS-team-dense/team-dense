@@ -12,15 +12,15 @@
       <li class="nav-item ml-2">
         <a href="{{ url('items') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品一覧画面</a>
       </li>
-
+      @if( Auth::user()->role == 1 )
       <li class="nav-item ml-2">
         <a href="{{ url('items/create') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">商品登録画面</a>
       </li>
-
       <li class="nav-item ml-2">
         <a href="{{ url('expired-items/index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">ゴミ箱（商品）</a>
       </li>
-
+      
+      @endif
       <li class="nav-item ml-2">
           <a href="{{ route('inquiry.index') }}" class="nav-link text-white"  aria-haspopup="true" aria-expanded="false">お問い合わせフォーム</a>
       </li>

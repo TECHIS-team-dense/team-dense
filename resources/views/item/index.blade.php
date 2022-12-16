@@ -42,10 +42,12 @@
 
                 <div class="flex flex-col text-center w-full mb-8">
                   <h1 class="sm:text-4xl text-3xl font-medium title-font text-gray-900 p-4">商品一覧</h1>
+                  @if( Auth::user()->role == 1 )
                     <div class="text-center m-1 p-4">
                       <a href="{{ url('items/create') }}" class="text-white bg-green-500 border-0 py-3 px-6
                       focus:outline-none hover:bg-green-600 rounded text-sm">商品登録</a>
                     </div>
+                  @endif
                 </div>
                   <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                     <table class="table-auto w-full text-left whitespace-no-wrap">
@@ -74,6 +76,7 @@
                             </td>
                             <td class="text-gray-900 title-font text-lg font-medium border-gray-500 bg-gray-100">{{ number_format($item->price) }}</td>
                             <td class="text-gray-900 title-font text-lg font-medium border-gray-500 bg-gray-100">{{ $item->category->primary->name }}</td>
+                            @if( Auth::user()->role == 1 )
                             <td class="text-center bg-gray-100">
                                 <button onclick="location.href='{{ route('items.edit', ['item' => $item->id ]) }}'"  class="text-white bg-green-500 border-0 py-2 px-3
                                   focus:outline-none hover:bg-green-600 rounded text-sm ">編集</button>
@@ -86,6 +89,7 @@
                                     focus:outline-none hover:bg-red-600 rounded text-sm">削除</a>
                               </form>
                             </td>
+                            @endif
                           </tr>
                         @endforeach
                       </tbody>
