@@ -21,10 +21,10 @@ class CreateCategoriesTable extends Migration
         });
 
         Schema::create('secondary_categories', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->string('name');
             $table->integer('sort_order');
-            $table->foreignId('primary_category_id')
+            $table->foreignId('primary_categories_id')
             ->constrained();
             $table->timestamps();
         });
