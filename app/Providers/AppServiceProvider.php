@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         
         //
-        if (\App::environment(['production']) || \APP::environment(['heroku3'])) {
+        if (\App::environment(['production']) || \APP::environment(['develop'])) {
             \URL::forceScheme('https');
         Schema::defaultStringLength(191);
         }
