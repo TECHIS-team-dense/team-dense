@@ -24,7 +24,7 @@ class CreateItemsTable extends Migration
             $table->string('filename_two')->nullable();
             $table->string('filename_three')->nullable();
             $table->unsignedInteger('price');
-            $table->foreignId('secondary_category_id');
+            $table->foreignId('secondary_category_id')->charset("utf8");
             $table->timestamps();
             $table->softDeletes();
         });

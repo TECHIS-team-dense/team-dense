@@ -15,7 +15,7 @@ class CreateOwnerPasswordResets extends Migration
     {
         Schema::create('owner_password_resets', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->index();
+            $table->string('email')->charset("utf8")->index();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
