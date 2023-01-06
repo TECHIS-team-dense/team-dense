@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('name', 100)->index();
             $table->string('status', 100)->default('active');
             $table->smallInteger('type')->nullable();
-            $table->string('detail', 500)->nullable();
+            $table->string('detail', 191)->nullable();
             $table->string('filename')->nullable();
             $table->string('filename_one')->nullable();
             $table->string('filename_two')->nullable();

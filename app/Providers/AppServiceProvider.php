@@ -26,11 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        
+        Schema::defaultStringLength(191);
         //
         if (\App::environment(['production']) || \APP::environment(['heroku'])) {
             \URL::forceScheme('https');
-        Schema::defaultStringLength(191);
+        
         }
     }
 }
