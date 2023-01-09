@@ -4,8 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleColumnToUsertable extends Migration
-{
+/* class AddRoleColumnToUsertable extends Migration
+{ */
     /**
      * Run the migrations.
      *
@@ -23,10 +23,10 @@ class AddRoleColumnToUsertable extends Migration
      *
      * @return void
      */
-     public function down()
+     /* public function down()
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');  //カラムの削除
         });
     }
-} 
+}  */
