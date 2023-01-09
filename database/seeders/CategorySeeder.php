@@ -33,4 +33,61 @@ class CategorySeeder extends Seeder
         ]);
 
         //DB::table('secondary_categories')->insert([
-            
+            //[
+                'name' => 'ミニバン',
+                'sort_order' => 1,
+                'primary_category_id' => 1
+            ],
+
+            [
+                'name' => 'SUV',
+                'sort_order' => 2,
+                'primary_category_id' => 1
+            ],
+
+            [
+                'name' => 'セダン',
+                'sort_order' => 3,
+                'primary_category_id' => 1
+            ],
+
+            [
+                'name' => 'ミニバン',
+                'sort_order' => 4,
+                'primary_category_id' => 2
+            ],
+
+            [
+                'name' => 'SUV',
+                'sort_order' => 5,
+                'primary_category_id' => 2
+            ],
+
+            [
+                'name' => 'セダン',
+                'sort_order' => 6,
+                'primary_category_id' => 2
+            ],
+
+            [
+                'name' => 'ミニバン',
+                'sort_order' => 7,
+                'primary_category_id' => 3
+            ],
+
+            [
+                'name' => 'SUV',
+                'sort_order' => 8,
+                'primary_category_id' => 3
+            ],
+
+            [
+                'name' => 'セダン',
+                'sort_order' => 9,
+                'primary_category_id' => 3
+            ],
+
+
+        ]);
+    }
+}
