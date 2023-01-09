@@ -21,8 +21,7 @@ class ItemSeeder extends Seeder
                 'name' => 'アルファード',
                 'type' =>'2',
                 'price' =>'7752000',
-                'detail' => 'ライブエッジの活版印刷の決まり文句、サルビアファニーパック謙虚な自慢のイッカクポートランド。
-                VHSマンブレードパロサントパーカーブランチ信託基金。',
+                'detail' => 'ライブエッジの活版印刷の決まり文句、サルビアファニーパック謙虚な自慢のイッカクポートランド。',
                 'secondary_category_id' =>1,
             ],
 
@@ -31,7 +30,7 @@ class ItemSeeder extends Seeder
                 'name' => 'CX-5',
                 'type' =>'2',
                 'price' =>'2766500',
-                'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
+                'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
                 'secondary_category_id' => 8,
             ],
 
@@ -40,7 +39,7 @@ class ItemSeeder extends Seeder
                 'name' => 'エクストレイル',
                 'type' =>'1',
                 'price' =>'3598000',
-                'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
+                'detail' => '商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細、商品詳細',
                 'secondary_category_id' => 5,
             ],
 
@@ -130,8 +129,7 @@ class ItemSeeder extends Seeder
                 'name' => 'CX-30',
                 'type' =>'3',
                 'price' =>'2840000',
-                'detail' => 'ライブエッジの活版印刷の決まり文句、サルビアファニーパック謙虚な自慢のイッカクポートランド。
-                VHSマンブレードパロサントパーカーブランチ信託基金',
+                'detail' => 'ライブエッジの活版印刷の決まり文句、サルビアファニーパック謙虚な自慢のイッカクポートランド。',
                 'secondary_category_id' => 8,
             ],
 
