@@ -32,8 +32,8 @@ class CategorySeeder extends Seeder
 
         ]);
 
-        //DB::table('secondary_categories')->insert([
-            //[
+        DB::table('secondary_categories')->insert([
+            [
                 'name' => 'ミニバン',
                 'sort_order' => 1,
                 'primary_category_id' => 1
