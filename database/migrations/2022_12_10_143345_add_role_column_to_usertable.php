@@ -13,9 +13,9 @@ class AddRoleColumnToUsertable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('role')->default(0)->comment('0は一般ユーザー、1は管理者');  //カラム追加
-        });
+        //Schema::table('users', function (Blueprint $table) {
+            //$table->integer('role')->default(0)->comment('0は一般ユーザー、1は管理者');  //カラム追加
+        //});
     }
 
     /**
