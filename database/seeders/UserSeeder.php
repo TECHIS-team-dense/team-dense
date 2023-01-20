@@ -40,8 +40,6 @@ class UserSeeder extends Seeder
                 'role' => '1',
             ],
 
-
-
         ]);
     }
 }
